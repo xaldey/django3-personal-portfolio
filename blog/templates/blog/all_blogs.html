@@ -1,0 +1,16 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="display-1 text-center fw-bold">Блог</h1>
+    <h2 class="display-5 text-center">Содержит блоги в количестве: {{ blogs.count }} штук</h2>
+    {% for blog in blogs %}
+    <a href="{% url 'blog:detail' blog.id %}"><h2 class="text-primary display-3 ">{{ blog.title }}</h2></a>
+    <h3 class="text-secondary fw-lighter">{{ blog.date_published|date:'d M Y'|upper }}</h3>
+    <p>{{ blog.description|safe|truncatechars:100 }}</p>
+    {% endfor %}
+    </br>
+</div>
+
+{% endblock %}

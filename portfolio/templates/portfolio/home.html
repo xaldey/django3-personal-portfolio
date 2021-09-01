@@ -1,0 +1,38 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+<div class="container position-relative text-center">
+    <h1 class="display-2">Моё портфолио</h1>
+    <img src="{% static 'portfolio/flinth.jpg' %}" alt="Кейт">
+    <span class="placeholder col-12 bg-light"></span>
+    <blockquote class="blockquote">
+        <p>Кит Чарльз Флинт (англ. Keith Charles Flint; 17 сентября 1969, Редбридж, Лондон — 4 марта 2019, Норт-Энд,
+            Эссекс, Великобритания) — бывший вокалист и танцор британской электронной группы «The Prodigy».</p>
+    </blockquote>
+</div>
+
+<hr>
+<div class="row">
+  {% for project in projects %}
+  <div class="col-lg-4 col-md-6 text-center">
+
+    {% if project.url %}
+    <a href="{{ project.url }}">
+      <img src="{{ project.image.url }}" class="img-fluid mb-4" width="220" height="220">
+    </a>
+    {% else %}
+
+    <img src="{{ project.image.url }}" class="img-fluid mb-4" width="220" height="220" >
+    {% endif %}
+    <h3 class="text-center">{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
